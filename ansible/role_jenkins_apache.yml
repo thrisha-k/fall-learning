@@ -1,0 +1,6 @@
+- name: Apache2 and Jenkins role
+  hosts: web
+  become: yes
+  roles:
+          - role: geerlingguy.jenkins
+          - role: geerlingguy.apache
