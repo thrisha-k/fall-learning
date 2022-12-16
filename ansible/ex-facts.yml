@@ -1,0 +1,10 @@
+---
+- name: "create user dave only on db host"
+  become: yes
+  hosts: all
+  tasks:
+          - name: create user dave 
+            user: 
+              name: dave
+              state: present
+            when: ansible_facts['hostname'] == "ip-172-31-49-105"

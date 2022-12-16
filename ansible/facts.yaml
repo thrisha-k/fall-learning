@@ -1,0 +1,12 @@
+- name: "display facts about all hosts"
+  hosts: all
+  become: yes
+  tasks: 
+  - name: "print the hostname"
+    debug: 
+      msg: "hello, this task is executing on {{ ansible_facts['hostname'] }}"
+  - name: "install finger"
+    apt: 
+      name: finger
+      state: present
+    when: ansible_facts['hostname'] == "ip-172-31-49-105" 

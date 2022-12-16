@@ -1,0 +1,7 @@
+IP_ADDRESS= {{ ansible_default_ipv4.address }}
+FQDN = {{ ansible_fqdn }}
+NUMBER_OF_PROCESSORS = {{ ansible_processor_count }}
+
+IP_ADDRESS = {{ ansible_facts['default_ipv4']['address'] }}
+FQDN = {{ ansible_facts['fqdn'] }}
+NUMBER_OF_PROCESSORS = {{ ansible_facts['processor_count'] }}

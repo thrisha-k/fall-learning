@@ -1,0 +1,11 @@
+---
+- name: use role to set up infra
+  become: yes
+  hosts: database
+  roles:
+          - role: infra-setup
+            my_user: 
+            - name: thrisha
+              state: present
+            - name: radha
+              state: present

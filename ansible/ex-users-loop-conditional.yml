@@ -1,0 +1,17 @@
+---
+- name: "create 3 users - use conditional and loop and variable"
+  become: yes
+  hosts: web
+  vars:
+          allowed: "yes"
+  tasks:
+          - name: "create 3 users"
+            user:
+                    name: "{{ item }}"
+                    state: present
+            loop:
+            - alice
+            - bob
+            - charlie
+            when: allowed == "yes"
+

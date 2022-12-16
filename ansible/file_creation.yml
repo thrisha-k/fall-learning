@@ -1,0 +1,24 @@
+# Create 3 files with content "hello from simplilearn" on the web host
+# /tmp/myfile
+# /etc/filefromansible
+# /root/anotherfile
+#
+
+
+---
+- name: "create files"
+  hosts: web
+  become: yes
+  tasks: 
+    - name: "create files with content"
+      copy:
+              dest: "/tmp/myfile"
+              content: hello from simplilearn
+    - name: "create files with content"
+      copy:
+              dest: "/etc/filefromansible"
+              content: hello from simplilearn
+    - name: "create files with content"
+      copy:
+              dest: "/root/anotherfile"
+              content: hello from simplilearn

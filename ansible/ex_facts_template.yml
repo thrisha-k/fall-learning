@@ -1,0 +1,19 @@
+# Create a file in all hosts with the below content
+# Use templates and facts
+# IP Address: < IP of the host >
+# FQDN: <FQDN of the host>
+# Number of processes: <Number of processes>
+---
+- name: Install custom apache with facts
+  hosts: web
+  become: yes
+  tasks:
+  - name: "Ensure apache2 is installed"
+    apt:
+          name: apache2
+          state: present
+  - name: "Deploy custom template file to web host"
+    template:
+            #dest: /var/www/html/index.html
+          dest: /etc/systeminfo.txt
+          src: facts_template.j2

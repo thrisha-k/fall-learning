@@ -1,0 +1,13 @@
+- name: "create user eragon"
+  hosts: web
+  become: yes
+  tasks: 
+  - name: "ensure eragon user exists"
+    user:
+            name: eragon
+            state: present
+    notify: handle system change
+  handlers:
+  - name: handle system change
+    debug:
+            msg: "something changed" 

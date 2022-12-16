@@ -1,0 +1,20 @@
+# Create 3 files with content "hello from simplilearn" on the web host
+# /tmp/myfile
+# /etc/filefromansible
+# /root/anotherfile
+#
+
+
+---
+- name: "create files"
+  hosts: web
+  become: yes
+  tasks: 
+    - name: "create all files"
+      copy:
+              dest: "{{ item.name }}"
+              content: "{{ item.text }}"
+      loop:
+              - {name: "/tmp/myfile", text: "hello"}
+              - {name: "/etc/filefromansible", text: "from"} 
+              - {name: "/root/anotherfile", text: "ansible"}

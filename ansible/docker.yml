@@ -1,0 +1,9 @@
+--- # Install docker on hosts
+- name: "Install docker on hosts"
+  become: yes
+  hosts: all
+  tasks:
+      - name: "Install docker"
+        apt: 
+            name: "docker"
+            state: "absent"

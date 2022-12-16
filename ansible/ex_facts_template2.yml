@@ -1,0 +1,13 @@
+---
+- name: display facts using template
+  become: yes
+  hosts: database
+  tasks:
+          - name: Ensure apache2 is installed
+            apt:
+                    name: apache2
+                    state: present
+          - name: Create custom template to display facts
+            template:
+                    src: facts_template2.j2
+                    dest: /var/www/html/index.html
