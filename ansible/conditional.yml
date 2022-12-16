@@ -1,0 +1,13 @@
+---
+- name: install finger using conditional
+  hosts: database
+  become: yes
+  vars: 
+    enabled: "no"
+
+  tasks:
+          - name: finger app should be available
+            apt:
+                    name: finger
+                    state: present
+            when: enabled == "no"

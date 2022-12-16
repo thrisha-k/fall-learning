@@ -1,0 +1,12 @@
+- name: set up webserver on all hosts
+  hosts: all
+  become: yes
+  tasks:
+          - name: "install apache2"
+            apt: 
+              name: "apache2"
+              state: "present"
+          - name: deploy template
+            template:
+                src: mytemplate.j2
+                dest: /var/www/html/index.html

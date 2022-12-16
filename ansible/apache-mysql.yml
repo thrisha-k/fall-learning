@@ -1,0 +1,25 @@
+--- # Install apache2
+- name: "configure web host to run apache2 web server"
+  hosts: web
+  become: true
+  tasks:
+          - name: "Ensure Alice user exists"
+            user:
+                    name: "alice"
+          - name: "Ensure apache2 is installed"
+            apt: 
+                name: "apache2"
+          - name: "Ensure apache2 is running"
+            service:
+                    name: "apache2"
+                    state: "started"
+                    enabled: yes
+- name: "Install mysql"
+  hosts: database
+  become: true
+  tasks:
+          - name: "Ensure mysql is installed"
+            apt:
+                    name: "mysql-server"
+                    state: "present"
+                    update_cache: yes
